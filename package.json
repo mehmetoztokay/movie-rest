@@ -1,0 +1,27 @@
+{
+  "name": "movie-rest",
+  "version": "1.0.0",
+  "description": "It's a Rest Api project for learning.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mehmetoztokay/movie-rest.git"
+  },
+  "author": "Mehmet",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mehmetoztokay/movie-rest/issues"
+  },
+  "homepage": "https://github.com/mehmetoztokay/movie-rest#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "express": "^4.18.1",
+    "mongoose": "^6.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.18"
+  }
+}
