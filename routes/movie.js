@@ -8,7 +8,20 @@ router.get('/', async (req, res, next) => {
     .loadAll()
     .then((movies) => res.json(movies))
     .catch((error) => res.json(error))
-    .finally(console.log('Tum filmlerin cekilme islemi tamamlandi.'))
+    .finally(console.log('Finished get all movies function.'))
+})
+
+// Get a movie
+router.get('/:movieId', async (req, res, next) => {
+  const movie = await movieservice
+    .loadOne(req.params.movieId)
+    .then((movie) => {
+      res.json(movie)
+    })
+    .catch((error) => {
+      next({ message: "The movie wasn't found.", code: 1 })
+    })
+    .finally(console.log('Finished get a movie.'))
 })
 
 // Create a movie
@@ -18,7 +31,7 @@ router.post('/', async (req, res, next) => {
     .insertOne({ title, imdb_score, category, country, year })
     .then((response) => res.send(response))
     .catch((error) => res.status(400).send(error.message))
-    .finally(console.log('Ekleme islemi tamamlandi.'))
+    .finally(console.log('Finished create a movie.'))
 })
 
 module.exports = router

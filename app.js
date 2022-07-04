@@ -15,6 +15,13 @@ const movie = require('./routes/movie')
 app.use('/api/', index)
 app.use('/api/movies', movie)
 
+// Error handler
+app.use((err, req, res, next) => {
+  // render the error page
+  res.status(err.status || 500)
+  res.json({ err: { message: err.message, code: err.code } })
+})
+
 app.listen(3000, () => {
   console.log('3000, ayakta...')
 })
