@@ -13,7 +13,7 @@ const index = require('./routes/index')
 const movie = require('./routes/movie')
 
 app.use('/api/', index)
-app.use('/api/movie', movie)
+app.use('/api/movies', movie)
 
 app.listen(3000, () => {
   console.log('3000, ayakta...')
