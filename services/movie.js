@@ -20,6 +20,15 @@ class movie extends base {
       }
     })
   }
+
+  async getBetweenCreatedAt(startDate, endDate) {
+    return Movie.find({
+      createdAt: {
+        $gte: new Date(startDate),
+        $lte: new Date(endDate)
+      }
+    })
+  }
 }
 
 module.exports = new movie(Movie)

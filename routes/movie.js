@@ -34,13 +34,23 @@ router.get('/:movieId', async (req, res, next) => {
 })
 
 // Get between of years movie
-router.get('/between/:startYear/:endYear', async (req, res, next) => {
+router.get('/between/year/:startYear/:endYear', async (req, res, next) => {
   const { startYear, endYear } = req.params
   await movieservice
     .getBetweenOfYears(startYear, endYear)
     .then((response) => res.json(response))
     .catch((error) => res.json(error))
     .finally(console.log('Finished get between of years movies method.'))
+})
+
+// Get between of created dates
+router.get('/between/createdDate', async (req, res, next) => {
+  const { startDate, endDate } = req.body
+  await movieservice
+    .getBetweenCreatedAt(startDate, endDate)
+    .then((response) => res.json(response))
+    .catch((error) => res.json(error))
+    .finally(console.log('Worked getBetweenCreatedAt method.'))
 })
 
 // Create a movie
