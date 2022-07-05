@@ -11,6 +11,15 @@ router.get('/', async (req, res, next) => {
     .finally(console.log('Finished get all movies function.'))
 })
 
+// Get top 10 movies
+router.get('/getTop/:getTopValue', async (req, res, next) => {
+  await movieservice
+    .getTopMovies(req.params.getTopValue)
+    .then((response) => res.json(response))
+    .catch((error) => res.json(error))
+    .finally('Finished get top movie method.')
+})
+
 // Get a movie
 router.get('/:movieId', async (req, res, next) => {
   const movie = await movieservice
@@ -42,6 +51,15 @@ router.put('/:movieId', async (req, res, next) => {
     .then((response) => res.json(response))
     .catch((error) => res.status(400).send(error.message))
     .finally(console.log('Finished update a movie method.'))
+})
+
+// Delete a movie
+router.delete('/:movieId', async (req, res, next) => {
+  await movieservice
+    .deleteOne(req.params.movieId)
+    .then((response) => res.json(response))
+    .catch((error) => res.json(error))
+    .finally(console.log('Finished delete a movie method'))
 })
 
 module.exports = router
