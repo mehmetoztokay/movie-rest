@@ -34,4 +34,14 @@ router.post('/', async (req, res, next) => {
     .finally(console.log('Finished create a movie.'))
 })
 
+// Update a movie
+router.put('/:movieId', async (req, res, next) => {
+  const { title, imdb_score, category, country, year } = req.body
+  await movieservice
+    .updateOne(req.params.movieId, { title, imdb_score, category, country, year })
+    .then((response) => res.json(response))
+    .catch((error) => res.status(400).send(error.message))
+    .finally(console.log('Finished update a movie method.'))
+})
+
 module.exports = router

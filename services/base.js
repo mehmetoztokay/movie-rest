@@ -19,6 +19,10 @@ class base {
   async insertOne(object) {
     return this.model.create(object)
   }
+
+  async updateOne(objectId, object) {
+    return this.model.findOneAndUpdate({ _id: objectId }, object)
+  }
 }
 
 module.exports = base
