@@ -22,7 +22,7 @@ router.get('/getTop/:getTopValue', async (req, res, next) => {
 
 // Get a movie
 router.get('/:movieId', async (req, res, next) => {
-  const movie = await movieservice
+  await movieservice
     .loadOne(req.params.movieId)
     .then((movie) => {
       res.json(movie)
@@ -31,6 +31,16 @@ router.get('/:movieId', async (req, res, next) => {
       next({ message: "The movie wasn't found.", code: 1 })
     })
     .finally(console.log('Finished get a movie.'))
+})
+
+// Get between of years movie
+router.get('/between/:startYear/:endYear', async (req, res, next) => {
+  const { startYear, endYear } = req.params
+  await movieservice
+    .getBetweenOfYears(startYear, endYear)
+    .then((response) => res.json(response))
+    .catch((error) => res.json(error))
+    .finally(console.log('Finished get between of years movies method.'))
 })
 
 // Create a movie
