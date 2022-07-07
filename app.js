@@ -11,9 +11,11 @@ const dbconnect = require('./helpers/dbconnect')()
 // Routes
 const index = require('./routes/index')
 const movie = require('./routes/movie')
+const director = require('./routes/director')
 
 app.use('/api/', index)
 app.use('/api/movies', movie)
+app.use('/api/directors', director)
 
 // Error handler
 app.use((err, req, res, next) => {
