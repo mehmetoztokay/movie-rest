@@ -43,4 +43,14 @@ router.put('/:directorId', async (req, res, next) => {
     .finally(console.log('Worked update a director method'))
 })
 
+// Delete a director
+router.delete('/:directorId', (req, res, next) => {
+  const directorId = req.params.directorId
+  directorservice
+    .deleteOne(directorId)
+    .then((response) => res.json(response))
+    .catch((error) => res.json(error))
+    .finally(console.log('Worked delete a director method'))
+})
+
 module.exports = router
