@@ -22,4 +22,14 @@ router.get('/', async (req, res, next) => {
     .finally(console.log('Worked get all directors method.'))
 })
 
+// Get a director
+router.get('/:directorId', async (req, res, next) => {
+  const directorId = req.params.directorId
+  directorservice
+    .loadOne(directorId)
+    .then((response) => res.json(response))
+    .catch((error) => res.json(error))
+    .finally('Worked get a director method.')
+})
+
 module.exports = router
