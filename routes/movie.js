@@ -55,9 +55,9 @@ router.get('/between/createdDate', async (req, res, next) => {
 
 // Create a movie
 router.post('/', async (req, res, next) => {
-  const { title, imdb_score, category, country, year, director_id } = req.body
+  const { title, imdbScore, category, country, year, directorId } = req.body
   await movieservice
-    .insertOne({ title, imdb_score, category, country, year, director_id })
+    .insertOne({ title, imdbScore, category, country, year, directorId })
     .then((response) => res.send(response))
     .catch((error) => res.status(400).send(error.message))
     .finally(console.log('Finished create a movie.'))
@@ -65,9 +65,9 @@ router.post('/', async (req, res, next) => {
 
 // Update a movie
 router.put('/:movieId', async (req, res, next) => {
-  const { title, imdb_score, category, country, year } = req.body
+  const { title, imdbScore, category, country, year } = req.body
   await movieservice
-    .updateOne(req.params.movieId, { title, imdb_score, category, country, year })
+    .updateOne(req.params.movieId, { title, imdbScore, category, country, year })
     .then((response) => res.json(response))
     .catch((error) => res.status(400).send(error.message))
     .finally(console.log('Finished update a movie method.'))

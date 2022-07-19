@@ -10,12 +10,12 @@ const MovieSchema = new Schema({
   category: String,
   country: String,
   year: Number,
-  imdb_score: Number,
+  imdbScore: Number,
   createdAt: {
     type: Date,
     default: Date.now
   },
-  director_id: Schema.Types.ObjectId
+  directorId: Schema.Types.ObjectId
 })
 
 module.exports = mongoose.model('movie', MovieSchema)

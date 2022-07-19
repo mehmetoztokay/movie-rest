@@ -4,7 +4,7 @@ class movie extends base {
   async getTopMovies(getTopValue) {
     const value = parseInt(getTopValue)
     return Movie.find()
-      .sort({ imdb_score: -1 })
+      .sort({ imdbScore: -1 })
       .limit(value || 10)
   }
 
