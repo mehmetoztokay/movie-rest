@@ -32,4 +32,15 @@ router.get('/:directorId', async (req, res, next) => {
     .finally('Worked get a director method.')
 })
 
+// Update a director
+router.put('/:directorId', async (req, res, next) => {
+  const directorId = req.params.directorId
+  const { name, surname, bio, createdAt } = req.body
+  directorservice
+    .updateOne(directorId, { name, surname, bio, createdAt })
+    .then((response) => res.json(response))
+    .catch((error) => res.json(error))
+    .finally(console.log('Worked update a director method'))
+})
+
 module.exports = router
