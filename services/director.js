@@ -3,7 +3,7 @@ const base = require('./base')
 const Director = require('../models/Director')
 
 class director extends base {
-  loadAll() {
+  async loadAll() {
     return Director.aggregate([
       {
         $lookup: {
@@ -48,7 +48,7 @@ class director extends base {
     ])
   }
 
-  loadOne(directorId) {
+  async loadOne(directorId) {
     return Director.aggregate([
       {
         $match: {

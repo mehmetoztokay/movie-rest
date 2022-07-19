@@ -1,6 +1,22 @@
 const base = require('./base')
 const Movie = require('../models/Movie')
 class movie extends base {
+  async loadAll() {
+    return Movie.aggregate([
+      {
+        $lookup: {
+          from: 'directors',
+          localField: 'directorId',
+          foreignField: '_id',
+          as: 'director'
+        }
+      },
+      { $unwind: '$director' }
+    ])
+  }
+
+  // TODO: Add loadOne method and list the director' of the movie.
+
   async getTopMovies(getTopValue) {
     const value = parseInt(getTopValue)
     return Movie.find()
