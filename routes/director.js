@@ -13,4 +13,13 @@ router.post('/', async (req, res, next) => {
     .finally(console.log('Worked create a director.'))
 })
 
+// Get all directors
+router.get('/', async (req, res, next) => {
+  directorservice
+    .loadAll()
+    .then((response) => res.json(response))
+    .catch((error) => res.json(error))
+    .finally(console.log('Worked get all directors method.'))
+})
+
 module.exports = router

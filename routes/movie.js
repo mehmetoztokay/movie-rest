@@ -55,9 +55,9 @@ router.get('/between/createdDate', async (req, res, next) => {
 
 // Create a movie
 router.post('/', async (req, res, next) => {
-  const { title, imdb_score, category, country, year } = req.body
+  const { title, imdb_score, category, country, year, director_id } = req.body
   await movieservice
-    .insertOne({ title, imdb_score, category, country, year })
+    .insertOne({ title, imdb_score, category, country, year, director_id })
     .then((response) => res.send(response))
     .catch((error) => res.status(400).send(error.message))
     .finally(console.log('Finished create a movie.'))
