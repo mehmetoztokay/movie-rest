@@ -13,7 +13,11 @@ const index = require('./routes/index')
 const movie = require('./routes/movie')
 const director = require('./routes/director')
 
-app.use('/api/', index)
+// Middlewares
+const verifyAuth = require('./middleware/verify-auth')
+
+app.use('/', index)
+app.use('/api', verifyAuth)
 app.use('/api/movies', movie)
 app.use('/api/directors', director)
 
