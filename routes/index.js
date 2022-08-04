@@ -11,4 +11,13 @@ router.post('/register', (req, res, next) => {
     .catch((err) => res.json(err))
 })
 
+// Authenticate User
+router.post('/authenticate', (req, res, send) => {
+  const { username, password } = req.body
+  userservice
+    .authenticate({ username, password })
+    .then((response) => res.json(response))
+    .catch((err) => res.json(err))
+})
+
 module.exports = router
